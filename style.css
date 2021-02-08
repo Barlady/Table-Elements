@@ -1,0 +1,32 @@
+table {
+    border-collapse: collapse;
+    border: 1px solid #7f7f7f;
+    margin-left: 100px;
+    margin-top: 30px;
+
+}
+
+table tr, td, th {
+    border: 1px solid #7f7f7f;
+}
+
+table td, th {
+    padding: 10px;
+    background-color:  #ffffe0;
+}
+
+table th {
+    text-transform: uppercase;
+    
+}
+.header {
+    font-family: Georgia;
+    text-align: center;
+    margin-top: 30px;
+}
+.yellow {
+	background color: yellow;
+}
+.pink {
+	background color: pink;
+}
