@@ -13,7 +13,7 @@ class GridView {
         this._header = '';
         this._headerClass = [];
         this._tableClass = [];
-        this._element = 'body';
+        this._element = 'div';
         this.attribute = [];
     }
 
@@ -30,12 +30,24 @@ class GridView {
     }
 
     /**
-    *  Method set header
+    *  Method set headerClass
     */
 
     setHeaderClass(headerClass) {
         if (typeof headerClass === 'object') {
             this._headerClass = headerClass;
+            return true;
+        }
+        return false;
+    }
+
+     /**
+    *  Method set tableClass
+    */
+
+      setTableClass(tableClass) {
+        if (typeof tableClass === 'object') {
+            this._tableClass = tableClass;
             return true;
         }
         return false;
@@ -61,6 +73,7 @@ class GridView {
     render(data) {
         this.setElement(data.element);
         this.setHeaderClass(data.headerClass);
+        this.setTableClass(data.tableClass);
         this.attribute = data.attribute;
         this.setHeader(data.header);
         this.data = data.data;
@@ -93,23 +106,52 @@ class GridView {
         table.append(trHeader);
         // draw table
         for (let i = 0; i < this.data.length; i++) {
+            // console.log(this.data[i]);
             let dataArr = this.data[i]; // одна строка данных
             let tr = document.createElement('tr');
             for (let key in this.attribute) {
                 let td = document.createElement('td');
                 let value = dataArr[key];
-                // есть ли функция в value
-                if (this.attribute[key].value) {
-                    value = this.attribute[key].value(dataArr);
+                console.log(value);
+                for( let key in value) {
+                 if (key == '0' || key == '') {
+                    td.classList.add('yellow');
+                    td.innerHTML = value[key];
                 }
-                // атрибут src
-                if (this.attribute[key].src) {
-                    td.innerHTML = value;
+                if  (key == '1') {
+                    td.classList.add('td-pink');
                 }
-                else {
-                    td.textContent = value;
+                if (key == '2') {
+                    td.classList.add('td-yellow');
                 }
+                if (key == '3') {
+                    td.classList.add('td-blue');
+                }
+                if (key == '4') {
+                    td.classList.add('td-green');
+                }
+                td.innerHTML = value[key];
+               
+                console.log(this.attribute[key]);
+                // // есть ли функция в value
+                // if (this.attribute[key].value) {
+                //     value = this.attribute[key].value(dataArr);
+                    
+                // }
+                // // атрибут src
+                // if (this.attribute[key].src != undefined) {
+                    
+                //     td.innerHTML = value[key];
+                // }
+                // else {
+                //     td.textContent = value[key];
+                // }
+              
+               
+                }
+                
                 tr.append(td);
+             
             }
             table.append(tr);
         }
