@@ -39,10 +39,16 @@ table th {
 }
 .td-pink {
     background-color: rgb(218, 141, 166);
+<<<<<<< HEAD
 }
 .td-blue {
     background-color: rgb(12, 117, 238);
 }
 .table-one {
     margin-left: 25px;
+=======
+}
+.td-blue {
+    background-color: rgb(12, 117, 238);
+>>>>>>> 1ff38f433ae17194c0331fd56313ec58edc2376a
 }
